@@ -29,6 +29,7 @@
   "license": "MIT",
   "homepage": "https://github.com/stanma9107/expo-tappay-apple-pay#readme",
   "devDependencies": {
+    "@tsconfig/node14": "^14.1.0",
     "@types/react": "^18.0.25",
     "babel-plugin-module-resolver": "^5.0.0",
     "expo-module-scripts": "^3.4.0",

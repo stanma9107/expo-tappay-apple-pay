@@ -27,6 +27,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "../app.plugin.js", {
+          "merchantId": "merchant.example.com",
+        }
+      ]
+    ]
   }
 }
