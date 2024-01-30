@@ -9,10 +9,6 @@ public class ExpoTappayApplePayModule: Module {
     // Can be inferred from module's class name, but it's recommended to set it explicitly for clarity.
     // The module will be accessible from `requireNativeModule('ExpoTappayApplePay')` in JavaScript.
     Name("ExpoTappayApplePay")
-
     // Defines a JavaScript synchronous function that runs the native code on the JavaScript thread.
-    Function("hello") {
-      return "Hello world! 👋"
-    }
   }
 }
