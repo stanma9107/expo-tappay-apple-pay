@@ -31,7 +31,14 @@
     "plugins": [
       [
         "../app.plugin.js", {
-          "merchantId": "merchant.example.com",
+          "merchantId": "merchant.tech.cherri.global.test",
+          "acceptNetworks": [
+            "Visa",
+            "MasterCard"
+          ],
+          "appId": 11340,
+          "appKey": "app_whdEWBH8e8Lzy4N6BysVRRMILYORF6UxXbiOFsICkz0J9j1C0JUlCHv1tVJC",
+          "serverType": "sandbox"
         }
       ]
     ]
