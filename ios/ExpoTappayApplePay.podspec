@@ -16,12 +16,12 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
+  s.dependency 'ExpoTappayDirect'
   s.framework = 'SafariServices'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
-    'DEFINES_MODULE' => 'YES',
-    'SWIFT_COMPILATION_MODE' => 'wholemodule'
+    'DEFINES_MODULE' => 'YES'
   }
   
   s.vendored_framework = "TPDirect.xcframework"
