@@ -1,1 +1,2 @@
-export { default as ApplePay } from "./ApplePayView";
+import ApplePay from "./ApplePay";
+export default ApplePay;

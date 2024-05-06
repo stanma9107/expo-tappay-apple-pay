@@ -2,7 +2,7 @@
   "platforms": ["ios"],
   "ios": {
     "modules": ["ExpoTappayApplePayModule"],
-    "appDelegateSubscribers": ["AppLifecycleDelegate"]
+    "appDelegateSubscribers": ["ExpoTappayApplePayLifecycleDelegate"]
   },
   "android": {
     "modules": ["dev.stanma.tappay.applepay.ExpoTappayApplePayModule"]
