@@ -1,12 +1,14 @@
 import applePay from "expo-tappay-apple-pay";
-import { Button, StyleSheet, View } from "react-native";
+import { Button, Platform, StyleSheet, View } from "react-native";
 
 export default function App() {
-  applePay.addReceivePrimeListener((event) => {
-    if (event.success) {
-      applePay.showResult(true);
-    }
-  });
+  if (Platform.OS === "ios" && applePay.isApplePayAvailable()) {
+    applePay.addReceivePrimeListener((event) => {
+      if (event.success) {
+        applePay.showResult(true);
+      }
+    });
+  }
 
   const setupMerchant = () => {
     applePay.setupMerchant({
