@@ -1,16 +1,18 @@
 import {
   EventEmitter,
-  requireNativeModule,
   Subscription,
+  UnavailabilityError,
 } from "expo-modules-core";
 
 import * as ApplePayTypes from "./ApplePay.type";
+import ExpoTappayApplePay from "./ExpoApplePay";
 
-const applePay = requireNativeModule("ExpoTappayApplePay");
-
-const emitter = new EventEmitter(applePay);
+const emitter = new EventEmitter(ExpoTappayApplePay);
 
 function removeListender(subscription: Subscription) {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    return;
+  }
   emitter.removeSubscription(subscription);
 }
 
@@ -18,6 +20,12 @@ function removeListender(subscription: Subscription) {
 function addReceivePrimeListener(
   listener: (payload: ApplePayTypes.OnReceivePrimeEvent) => void,
 ): Subscription {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
   return emitter.addListener("onReceivePrime", listener);
 }
 
@@ -25,6 +33,12 @@ function addReceivePrimeListener(
 function addApplePayStartListener(
   listener: (payload: ApplePayTypes.OnApplePayGeneralEvent) => void,
 ) {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
   return emitter.addListener("onApplePayStart", listener);
 }
 
@@ -32,6 +46,12 @@ function addApplePayStartListener(
 function addApplePayCancelListener(
   listener: (payload: ApplePayTypes.OnApplePayGeneralEvent) => void,
 ) {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
   return emitter.addListener("onApplePayCancel", listener);
 }
 
@@ -39,6 +59,12 @@ function addApplePayCancelListener(
 function addApplePaySuccessListener(
   listener: (payload: ApplePayTypes.OnApplePayTransactionEvent) => void,
 ) {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
   return emitter.addListener("onApplePaySuccess", listener);
 }
 
@@ -46,6 +72,12 @@ function addApplePaySuccessListener(
 function addApplePayFailedListener(
   listener: (payload: ApplePayTypes.OnApplePayTransactionEvent) => void,
 ) {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
   return emitter.addListener("onApplePayFailed", listener);
 }
 
@@ -53,15 +85,33 @@ function addApplePayFailedListener(
 function addApplePayFinishedListener(
   listener: (payload: ApplePayTypes.OnApplePayGeneralEvent) => void,
 ) {
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
   return emitter.addListener("onApplePayFinished", listener);
 }
 
 function isApplePayAvailable(): boolean {
-  return applePay.isApplePayAvailable();
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
+  return ExpoTappayApplePay.isApplePayAvailable();
 }
 
 const setupMerchant = (props: ApplePayTypes.MerchantOptions) => {
-  applePay.setupMerchant(
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
+  ExpoTappayApplePay.setupMerchant(
     props.name,
     props.capabilities,
     props.merchantId,
@@ -71,19 +121,37 @@ const setupMerchant = (props: ApplePayTypes.MerchantOptions) => {
 };
 
 const startApplePay = (props: ApplePayTypes.StartPaymentOptions) => {
-  applePay.clearCart();
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
+  ExpoTappayApplePay.clearCart();
   props.cart.forEach((item) => {
-    applePay.addToCart(item.name, item.amount);
+    ExpoTappayApplePay.addToCart(item.name, item.amount);
   });
-  applePay.startPayment();
+  ExpoTappayApplePay.startPayment();
 };
 
 const showResult = (isSuccess: boolean) => {
-  applePay.showResult(isSuccess);
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
+  ExpoTappayApplePay.showResult(isSuccess);
 };
 
 const showSetup = () => {
-  applePay.showSetup();
+  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
+    throw new UnavailabilityError(
+      "expo-tappay-apple-pay",
+      "addReceivePrimeListener",
+    );
+  }
+  ExpoTappayApplePay.showSetup();
 };
 
 export default {
