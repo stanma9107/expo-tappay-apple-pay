@@ -1,6 +1,6 @@
 {
   "name": "expo-tappay-apple-pay",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Integrate Tappay Apple Pay to Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
