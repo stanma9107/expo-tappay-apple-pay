@@ -74,10 +74,9 @@ public class ExpoTappayApplePayModule: Module  {
     // TODO: Start Apple Pay Payment
     AsyncFunction("startPayment") { (promise: Promise) in
       // TODO: Prepare Payment
-        let applePayDelegate = ApplePayDelegate() { (name: String, body: [String: Any?]) -> Void in
-            debugPrint(name)
-            self.sendEvent(name, body)
-        }
+      let applePayDelegate = ApplePayDelegate() { (name: String, body: [String: Any?]) -> Void in
+          self.sendEvent(name, body)
+      }
       applePay = TPDApplePay.setupWthMerchant(merchant, with: consumer, with: cart, withDelegate: applePayDelegate)
         
       // TODO: Start Payment
