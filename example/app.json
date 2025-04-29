@@ -29,6 +29,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "expo-tappay-direct",
       [
         "../app.plugin.js", {
           "merchantId": "merchant.tech.cherri.global.test",
