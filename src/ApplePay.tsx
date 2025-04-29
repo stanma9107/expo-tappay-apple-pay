@@ -1,32 +1,19 @@
-import {
-  EventEmitter,
-  Subscription,
-  UnavailabilityError,
-} from "expo-modules-core";
+import { EventSubscription, UnavailabilityError } from "expo-modules-core";
 
 import * as ApplePayTypes from "./ApplePay.type";
 import ExpoTappayApplePay from "./ExpoApplePay";
 
-const emitter = new EventEmitter(ExpoTappayApplePay);
-
-function removeListender(subscription: Subscription) {
-  if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
-    return;
-  }
-  emitter.removeSubscription(subscription);
-}
-
 /* Receive Prime Listener */
 function addReceivePrimeListener(
   listener: (payload: ApplePayTypes.OnReceivePrimeEvent) => void,
-): Subscription {
+): EventSubscription {
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
       "addReceivePrimeListener",
     );
   }
-  return emitter.addListener("onReceivePrime", listener);
+  return ExpoTappayApplePay.addListener("onReceivePrime", listener);
 }
 
 /* Apple Pay Start Listener */
@@ -39,7 +26,7 @@ function addApplePayStartListener(
       "addReceivePrimeListener",
     );
   }
-  return emitter.addListener("onApplePayStart", listener);
+  return ExpoTappayApplePay.addListener("onApplePayStart", listener);
 }
 
 /* Apple Pay Cancel Listener */
@@ -52,7 +39,7 @@ function addApplePayCancelListener(
       "addReceivePrimeListener",
     );
   }
-  return emitter.addListener("onApplePayCancel", listener);
+  return ExpoTappayApplePay.addListener("onApplePayCancel", listener);
 }
 
 /* Apple Pay Success Listener */
@@ -65,7 +52,7 @@ function addApplePaySuccessListener(
       "addReceivePrimeListener",
     );
   }
-  return emitter.addListener("onApplePaySuccess", listener);
+  return ExpoTappayApplePay.addListener("onApplePaySuccess", listener);
 }
 
 /* Apple Pay Failed Listener */
@@ -78,7 +65,7 @@ function addApplePayFailedListener(
       "addReceivePrimeListener",
     );
   }
-  return emitter.addListener("onApplePayFailed", listener);
+  return ExpoTappayApplePay.addListener("onApplePayFailed", listener);
 }
 
 /* Apple Pay Finished Listener */
@@ -91,7 +78,7 @@ function addApplePayFinishedListener(
       "addReceivePrimeListener",
     );
   }
-  return emitter.addListener("onApplePayFinished", listener);
+  return ExpoTappayApplePay.addListener("onApplePayFinished", listener);
 }
 
 function isApplePayAvailable(): boolean {
@@ -160,7 +147,6 @@ export default {
   startApplePay,
   showResult,
   showSetup,
-  removeListender,
   addReceivePrimeListener,
   addApplePayStartListener,
   addApplePayCancelListener,

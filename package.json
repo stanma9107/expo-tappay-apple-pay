@@ -1,6 +1,6 @@
 {
   "name": "expo-tappay-apple-pay",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Integrate Tappay Apple Pay to Expo",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -32,8 +32,8 @@
     "@tsconfig/node14": "^14.1.0",
     "@types/react": "^18.0.25",
     "babel-plugin-module-resolver": "^5.0.0",
-    "expo-module-scripts": "^3.4.0",
-    "expo-modules-core": "^1.11.8"
+    "expo-module-scripts": "^4.0.5",
+    "expo-modules-core": "^2.2.3"
   },
   "peerDependencies": {
     "expo": "*",
@@ -41,6 +41,6 @@
     "react-native": "*"
   },
   "dependencies": {
-    "expo-tappay-direct": "^1.0.2"
+    "expo-tappay-direct": "^1.0.5"
   }
 }

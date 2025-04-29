@@ -1,7 +1,7 @@
-import { NativeModulesProxy } from "expo-modules-core";
+import { requireNativeModule } from "expo-modules-core";
 import { NativeModule } from "react-native";
 
-export default NativeModulesProxy.ExpoTappayApplePay ||
+export default requireNativeModule("ExpoTappayApplePay") ||
   // If the real native module doesn't exist, make a pretend one, instead of
   // `null`, so we can offer an `isApplePayAvailable` (that will always give
   // `false`, because we're on an unsupported platform).
