@@ -23,7 +23,7 @@ function addApplePayStartListener(
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
+      "addApplePayStartListener",
     );
   }
   return ExpoTappayApplePay.addListener("onApplePayStart", listener);
@@ -36,7 +36,7 @@ function addApplePayCancelListener(
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
+      "addApplePayCancelListener",
     );
   }
   return ExpoTappayApplePay.addListener("onApplePayCancel", listener);
@@ -49,7 +49,7 @@ function addApplePaySuccessListener(
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
+      "addApplePaySuccessListener",
     );
   }
   return ExpoTappayApplePay.addListener("onApplePaySuccess", listener);
@@ -62,7 +62,7 @@ function addApplePayFailedListener(
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
+      "addApplePayFailedListener",
     );
   }
   return ExpoTappayApplePay.addListener("onApplePayFailed", listener);
@@ -75,7 +75,7 @@ function addApplePayFinishedListener(
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
+      "addApplePayFinishedListener",
     );
   }
   return ExpoTappayApplePay.addListener("onApplePayFinished", listener);
@@ -85,7 +85,7 @@ function isApplePayAvailable(): boolean {
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
     throw new UnavailabilityError(
       "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
+      "isApplePayAvailable",
     );
   }
   return ExpoTappayApplePay.isApplePayAvailable();
@@ -93,10 +93,7 @@ function isApplePayAvailable(): boolean {
 
 const setupMerchant = (props: ApplePayTypes.MerchantOptions) => {
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
-    throw new UnavailabilityError(
-      "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
-    );
+    throw new UnavailabilityError("expo-tappay-apple-pay", "setupMerchant");
   }
   ExpoTappayApplePay.setupMerchant(
     props.name,
@@ -109,10 +106,7 @@ const setupMerchant = (props: ApplePayTypes.MerchantOptions) => {
 
 const startApplePay = (props: ApplePayTypes.StartPaymentOptions) => {
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
-    throw new UnavailabilityError(
-      "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
-    );
+    throw new UnavailabilityError("expo-tappay-apple-pay", "startApplePay");
   }
   ExpoTappayApplePay.clearCart();
   props.cart.forEach((item) => {
@@ -123,20 +117,14 @@ const startApplePay = (props: ApplePayTypes.StartPaymentOptions) => {
 
 const showResult = (isSuccess: boolean) => {
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
-    throw new UnavailabilityError(
-      "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
-    );
+    throw new UnavailabilityError("expo-tappay-apple-pay", "showResult");
   }
   ExpoTappayApplePay.showResult(isSuccess);
 };
 
 const showSetup = () => {
   if (!ExpoTappayApplePay || !ExpoTappayApplePay.isApplePayAvailable()) {
-    throw new UnavailabilityError(
-      "expo-tappay-apple-pay",
-      "addReceivePrimeListener",
-    );
+    throw new UnavailabilityError("expo-tappay-apple-pay", "showSetup");
   }
   ExpoTappayApplePay.showSetup();
 };
